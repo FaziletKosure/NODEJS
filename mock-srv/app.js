@@ -2,6 +2,7 @@
 
 const path = require('path')
 const AutoLoad = require('fastify-autoload')
+const cors = require('fastify-cors')
 
 module.exports = async function (fastify, opts) {
   // Place here your custom code!
@@ -11,6 +12,7 @@ module.exports = async function (fastify, opts) {
   // This loads all plugins defined in plugins
   // those should be support plugins that are reused
   // through your application
+  fastify.register(cors)
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, 'plugins'),
     options: Object.assign({}, opts)
