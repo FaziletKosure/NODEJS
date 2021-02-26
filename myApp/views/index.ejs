@@ -9,9 +9,11 @@
     <title>Document</title>
 </head>
 <body>
+
+  <!-- <% const title = 'some title' %> -->
     <nav>
         <div class="nav-wrapper container" >
-          <a href="/" class="brand-logo">CRUD</a>
+          <a href="/" class="brand-logo">CRUD </a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="add-item">Add Item</a></li>
             
@@ -19,12 +21,27 @@
         </div>
       </nav>
       <div class="container">
+        <!-- <%= JSON.stringify(items) %> -->
         <ul class="collection with-header">
             <!-- <li class="collection-header"><h4>First Names</h4></li> -->
+            <% if (items.length>0){ %>
+              <% items.forEach(item=>{%>
+                <li class="collection-item"><div><%= item.name %>  $<%= item.price %><a href="#!" class="secondary-content">
+                  <i class="material-icons">delete</i>
+                  <i class="material-icons">edit</i>
+                </a></div></li>
+
+
+              <%})%>
+             
+           <% } else { %>
+            <li>There no items </li>
+
+           <%}%>
+            <!-- <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
             <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
             <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-            <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-            <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+            <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li> -->
           </ul>
       </div>
       
