@@ -9,7 +9,7 @@ const itemSchema=new Schema(
             require:true
         },
         price:{
-            trype:Number,
+            type:Number,
             require:true
         }
     },

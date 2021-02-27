@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
 app.set('view engine', 'ejs');
+const Item=require('./models/items')
 const mongoose = require('mongoose');
-
 
 // const mongodb='mongodb+srv://<username>:<password>@cluster0.lwnah.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect(mongodb,{ useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{console.log('Mongodb connected')
@@ -12,6 +12,25 @@ app.listen(8080)}).catch(err=>console.log(err))
 // app.get('/',(req,res)=>{
 //     res.sendFile('./views/index.html',{root:__dirname})
 // })
+
+app.get('/create-item',(req,res)=>{
+    const item=new Item({
+        name:'computer',
+        price:2000
+    })
+
+    item.save().then(result=>res.send(result))
+})
+
+app.get('/get-items',(req,res)=>{
+
+    Item.find().then(result=>res.send(result)).catch(err=>console.log(err))
+})
+
+app.get('/get-item',(req,res)=>{
+
+    Item.findById('603a3c81852b238f489b1318').then(result=>res.send(result)).catch(err=>console.log(err))
+})
 
 app.get('/',(req,res)=>{
     const items =[
