@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 app.set('view engine', 'ejs');
 const mongoose = require('mongoose');
+
+
 // const mongodb='mongodb+srv://<username>:<password>@cluster0.lwnah.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect(mongodb,{ useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{console.log('Mongodb connected')
 app.listen(8080)}).catch(err=>console.log(err))
