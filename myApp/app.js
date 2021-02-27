@@ -13,37 +13,50 @@ app.listen(8080)}).catch(err=>console.log(err))
 //     res.sendFile('./views/index.html',{root:__dirname})
 // })
 
-app.get('/create-item',(req,res)=>{
-    const item=new Item({
-        name:'computer',
-        price:2000
-    })
+// app.get('/create-item',(req,res)=>{
+//     const item=new Item({
+//         name:'computer',
+//         price:2000
+//     })
 
-    item.save().then(result=>res.send(result))
-})
+//     item.save().then(result=>res.send(result))
+// })
 
-app.get('/get-items',(req,res)=>{
+// app.get('/get-items',(req,res)=>{
 
-    Item.find().then(result=>res.send(result)).catch(err=>console.log(err))
-})
+//     Item.find().then(result=>res.send(result)).catch(err=>console.log(err))
+// })
 
-app.get('/get-item',(req,res)=>{
+// app.get('/get-item',(req,res)=>{
 
-    Item.findById('603a3c81852b238f489b1318').then(result=>res.send(result)).catch(err=>console.log(err))
-})
+//     Item.findById('603a3c81852b238f489b1318').then(result=>res.send(result)).catch(err=>console.log(err))
+// })
 
-app.get('/',(req,res)=>{
-    const items =[
-        { name:'mobile phone', price:1000  },
-        { name:'book', price:30  },
-        { name:'computer', price:2000  }
-    ]
-    res.render('index',{items})
-})
+// app.get('/',(req,res)=>{
+//     const items =[
+//         { name:'mobile phone', price:1000  },
+//         { name:'book', price:30  },
+//         { name:'computer', price:2000  }
+//     ]
+//     res.render('index',{items})
+// })
 
 // app.get('/add-item',(req,res)=>{
 //     res.sendFile('./views/add-item.html',{root:__dirname})
 // })
+
+
+app.get('/', (req, res) => {
+    res.redirect('/get-items');
+})
+
+app.get('/get-items', (req, res) => {
+
+    Item.find().then(result => {
+
+        res.render('index', { items: result });
+    }).catch(err => console.log(err))
+})
 
 app.get('/add-item',(req,res)=>{
     res.render('add-item')
