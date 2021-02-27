@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 app.set('view engine', 'ejs');
+const mongodb='mongodb+srv://<username>:<password>@cluster0.lwnah.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 app.listen(8080)
 
