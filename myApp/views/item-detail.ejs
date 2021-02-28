@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+<body>
+
+  <!-- <% const title = 'some title' %> -->
+  <%- include('../partials/nav.ejs') %>
+   
+      <div class="container">
+          <h4>Item Detail</h4>
+          <div>
+              <h5>Item name: <%= item.name %></h5>
+              <h5>Item price: $<%= item.price %></h5>
+             
+          </div>
+          <a class='delete btn'
+           href="">Delete</a>
+  
+      </div>
+      
+    
+
+</body>
+</html>
