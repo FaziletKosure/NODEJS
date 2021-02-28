@@ -74,6 +74,15 @@ app.post('/items',(req,res)=>{
 
 })
 
+app.get('/items/:id',(req,res)=>{
+    // console.log(req.params);
+    const id=req.params.id
+    Item.findById(id).then(result=>{
+        console.log(result);
+        res.render('item-detail',{item:result})
+    })
+})
+
 // app.use((req,res)=>{
 //     res.sendFile('./views/error.html',{root:__dirname})
 // })

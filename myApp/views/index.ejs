@@ -12,7 +12,7 @@
             <!-- <li class="collection-header"><h4>First Names</h4></li> -->
             <% if (items.length>0){ %>
               <% items.forEach(item=>{%>
-                <li class="collection-item"><div><%= item.name %>  $<%= item.price %><a href="#!" class="secondary-content">
+                <li class="collection-item"><div><a href="/items/<%= item._id%>"><%= item.name %>  $<%= item.price %></a><a href="#!" class="secondary-content">
                   <i class="material-icons">delete</i>
                   <i class="material-icons">edit</i>
                 </a></div></li>
