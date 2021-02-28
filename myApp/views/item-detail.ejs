@@ -13,12 +13,28 @@
               <h5>Item price: $<%= item.price %></h5>
              
           </div>
-          <a class='delete btn'
+          <a id="deleteBtn" data-id="<%= item._id %>" class='delete btn'
            href="">Delete</a>
   
       </div>
       
-    
+    <script>
+        deleteBtn.onclick=function(e){
+            e.preventDefault();
+            // const id=deleteBtn.dataset.id
+            const id=e.target.getAttribute('data-id')
+            console.log(id);
+            const endpoint=`/items/${id}`
+
+            fetch(endpoint,{
+                method:'DELETE'
+            }).then(res=>res.json()).then(data=>{
+               console.log(data); 
+              window.location.href=data.redirect
+            }).catch(err=>console.log(err))
+        }
+
+    </script>
 
 </body>
 </html>

@@ -83,6 +83,15 @@ app.get('/items/:id',(req,res)=>{
     })
 })
 
+app.delete('/items/:id',(req,res)=>{
+    // console.log(req.params);
+    const id=req.params.id
+    Item.findByIdAndDelete(id).then(result=>{
+        res.json({redirect:'/get-items'})
+     
+    })
+})
+
 // app.use((req,res)=>{
 //     res.sendFile('./views/error.html',{root:__dirname})
 // })
