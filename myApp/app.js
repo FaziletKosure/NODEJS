@@ -92,6 +92,15 @@ app.delete('/items/:id',(req,res)=>{
     })
 })
 
+app.put('/items/:id',(req,res)=>{
+    // console.log(req.params);
+    const id=req.params.id
+    Item.findByIdAndUpdate(id,req.body).then(result=>{
+        res.json({msg:'Updated Successfully'})
+     
+    })
+})
+
 // app.use((req,res)=>{
 //     res.sendFile('./views/error.html',{root:__dirname})
 // })
